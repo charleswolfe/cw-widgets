@@ -1,7 +1,7 @@
 
 **Installation**
 
-cd to widgets
+cd to this directory
 
 Install `pip` and `venv`
 
