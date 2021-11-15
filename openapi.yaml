@@ -1,0 +1,162 @@
+openapi: 3.0.2
+info:
+  title: ''
+  version: ''
+paths:
+  /widgets/:
+    get:
+      operationId: listWidgets
+      description: 'Get a list of all widgets'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - widgets
+    post:
+      operationId: createWidget
+      description: 'Create a new widget'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Widget'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - widgets
+  /widgets/{id}:
+    get:
+      operationId: retrieveWidget
+      description: 'Get a single widget'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique value identifying this widget.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - widgets
+    put:
+      operationId: updateWidget
+      description: 'Update a widget'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique value identifying this widget.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Widget'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - widgets
+    patch:
+      operationId: partialUpdateWidget
+      description: 'Update a widget'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique value identifying this widget.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Widget'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Widget'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Widget'
+          description: ''
+      tags:
+      - widgets
+    delete:
+      operationId: destroyWidget
+      description: 'Delete a widget'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique value identifying this widget.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - widgets
+components:
+  schemas:
+    Widget:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 64
+        number_of_parts:
+          type: integer
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+      required:
+      - name
+      - number_of_parts
